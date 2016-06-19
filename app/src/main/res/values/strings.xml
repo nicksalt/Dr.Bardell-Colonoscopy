@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Dr. Bardell Colonoscopy</string>
+    <string name="further_instructions">Further Instructions</string>
+    <string name="para_1">Starting five days before your colonoscopy, avoid nuts and seeds.</string>
+    <string name="para_2">Follow a clear fluid diet the day before your colonoscopy. This includes
+    coffee, tea with sugar but no milk, clear broth soups, Gatorade, soft drinks, and jello (not red or
+    blue). Do not have red liquids or solids of any kind.</string>
+    <string name="para_3">Drink 3-4 liters of fluids the day before your colonoscopy.</string>
+    <string name="para_4"> Take your PICO_SALAX and Dulcolax tablets when notifed, as described in
+    the instructions. They can be purchased at any pharmacy without prescription. </string>
+    <string name="edit_date">Edit Date</string>
+    <string name="done">Done</string>
+    <string name="next">Next</string>
+    <string name="edit_time">Edit Time</string>
+</resources>
