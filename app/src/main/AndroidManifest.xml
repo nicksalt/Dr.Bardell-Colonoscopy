@@ -15,11 +15,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-        <service android:name=".NotificationService">
-            <intent-filter>
-                <action android:name="ca.mobileappsolutions.drbardellcolonoscopy.NotificationService" />
-            </intent-filter>
-        </service>
+
+        <receiver
+            android:name=".NotificationReceiver"
+            android:process=":remote" />
+        <receiver
+            android:name=".NotificationReceiver1"
+            android:process=":remote" />
+        <receiver
+            android:name=".NotificationReciever2"
+            android:process=":remote" />
+        <receiver
+            android:name=".NotificationReciever3"
+            android:process=":remote" />
+        <receiver
+            android:name=".NotificationReciever4"
+            android:process=":remote" />
+        <receiver
+            android:name=".NotificationReciever5"
+            android:process=":remote" />
 
         <service android:name=".TimeService">
             <intent-filter>
