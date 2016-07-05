@@ -11,10 +11,6 @@ import android.util.Log;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
-/**
- * Created by Nick on 2016-06-25.
- */
-
 public class NotificationReceiver1 extends BroadcastReceiver {
     String notText;
     @Override
@@ -35,7 +31,8 @@ public class NotificationReceiver1 extends BroadcastReceiver {
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle(context.getResources().getString(R.string.app_name))
                         .setContentText(notText)
-                        .setPriority(Notification.PRIORITY_MAX)
+                        .setStyle(new NotificationCompat.BigTextStyle().bigText(notText))
+                        .setDefaults(Notification.DEFAULT_ALL)
                         .setAutoCancel(true);
         Intent resultIntent = new Intent(context, HomeScreen.class);
         PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 8,

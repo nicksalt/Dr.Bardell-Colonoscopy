@@ -13,16 +13,12 @@ import android.os.IBinder;
 
 import java.util.Calendar;
 
-/**
- * Created by Nick on 2016-06-10.
- */
-
 public class TimeService extends Service {
 
     private SharedPreferences myPrefs;
-    private SharedPreferences.Editor e;
-    private Calendar appointment;
-    private long apTime;
+    SharedPreferences.Editor e;
+    Calendar appointment;
+    long apTime;
     private int month;
     private int day;
     private int year;
@@ -56,26 +52,26 @@ public class TimeService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         myPrefs = getSharedPreferences("myPrefs", MODE_PRIVATE);
         e = myPrefs.edit();
+        e.putBoolean("running", true);
+        e.apply();
         appointment = Calendar.getInstance();
         getAppointment();
         appointment.set(year,month, day, hour, minute);
         apTime = appointment.getTimeInMillis();
-        e.putInt("not", 0);
         setIntents();
         setCalendars();
-        long c = System.currentTimeMillis();
         am1 =( AlarmManager)getSystemService(Context.ALARM_SERVICE);
         am2 =( AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
         am3 =( AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
         am4 =( AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
         am5=( AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
         am6 =( AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
-        am6.set(AlarmManager.RTC_WAKEUP, not6.getTimeInMillis(), pi6);
-        am5.set(AlarmManager.RTC_WAKEUP, not5.getTimeInMillis(), pi5);
-        am4.set(AlarmManager.RTC_WAKEUP, not4.getTimeInMillis(), pi4);
-        am3.set(AlarmManager.RTC_WAKEUP, apTime-1000*60*60*24*2, pi3);
-        am2.set(AlarmManager.RTC_WAKEUP, apTime-(1000*60*60*24*5), pi2);
         am1.set(AlarmManager.RTC_WAKEUP,apTime-(1000*60*60*24*7), pi1);
+        am2.set(AlarmManager.RTC_WAKEUP, apTime-(1000*60*60*24*5), pi2);
+        am3.set(AlarmManager.RTC_WAKEUP, apTime-1000*60*60*24*2, pi3);
+        am4.set(AlarmManager.RTC_WAKEUP, not4.getTimeInMillis(), pi4);
+        am5.set(AlarmManager.RTC_WAKEUP, not5.getTimeInMillis(), pi5);
+        am6.set(AlarmManager.RTC_WAKEUP, not6.getTimeInMillis(), pi6);
         return Service.START_STICKY;
     }
 
@@ -84,12 +80,6 @@ public class TimeService extends Service {
         return null;
     }
 
-    public void sentNot(){
-        /*  - Create Calendars for all dates
-            - Create Services for all notifications
-            - Set Alarms and intents
-         */
-    }
     public void getAppointment() {
         year = myPrefs.getInt("year", 2016);
         month = myPrefs.getInt("month", 0);
@@ -117,8 +107,8 @@ public class TimeService extends Service {
         not5= Calendar.getInstance();
         not6= Calendar.getInstance();
         not4.set(year, month, day-1, 12, 0);
-        not5.set(year, month, day-1, 12, 0);
-        not6.set(year, month, day-1, 12, 0);
+        not5.set(year, month, day-1, 17, 0);
+        not6.set(year, month, day-1, 20, 0);
     }
 
 

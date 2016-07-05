@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="ca.mobileappsolutions.drbardellcolonoscopy.HomeScreen"
+        android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="4dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:id="@+id/date" />
+    </LinearLayout>
+    <TextView
+        android:text="@string/further_instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:text="@string/para_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/para_1"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginBottom="7dp" />
+    <TextView
+        android:text="@string/para_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/para_2"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginBottom="7dp"/>
+    <TextView
+        android:text="@string/para_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/para_3"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginBottom="7dp"/>
+    <TextView
+        android:text="@string/para_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/para_4"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginBottom="7dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            style="?android:borderlessButtonStyle"
+            android:text="@string/edit_date"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:background="@color/white"
+            android:textSize="22sp"
+            android:onClick="editDate"
+            android:id="@+id/edit_date"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+
+</LinearLayout>

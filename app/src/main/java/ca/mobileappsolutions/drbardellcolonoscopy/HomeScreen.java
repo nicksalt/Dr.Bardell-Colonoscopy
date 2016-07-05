@@ -5,15 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 
+@SuppressWarnings("ALL")
 public class HomeScreen extends Activity {
     private SharedPreferences myPrefs;
     private View dateDialogView;
@@ -27,6 +29,7 @@ public class HomeScreen extends Activity {
     private int year;
     private int hour;
     private int minute;
+    private TextView date;
 
 
     @Override
@@ -38,6 +41,8 @@ public class HomeScreen extends Activity {
         alertDialog = new AlertDialog.Builder(this).create();
         timeDialogView = View.inflate(this, R.layout.time_picker, null);
         alertDialog2 = new AlertDialog.Builder(this).create();
+        setTextViews();
+
 
 
     }
@@ -78,6 +83,7 @@ public class HomeScreen extends Activity {
                 alertDialog2.dismiss();
                 Intent startIntent = new Intent(HomeScreen.this, TimeService.class);
                 saveDate(year, month, day, hour, minute);
+                setTextViews();
                 HomeScreen.this.startService(startIntent);
             }
         });
@@ -94,6 +100,24 @@ public class HomeScreen extends Activity {
         e.apply();
     }
 
+    public void setTextViews(){
+        int tempYear = myPrefs.getInt("year", 0);
+        date = (TextView) findViewById(R.id.date);
+        if (tempYear!=0){
+            int tempMonth = myPrefs.getInt("month", 0);
+            int tempDay = myPrefs.getInt("day", 0);
+            int tempHour = myPrefs.getInt("hour",0);
+            int tempMinute = myPrefs.getInt("minute", 0);
+            Calendar temp = Calendar.getInstance();
+            temp.set(tempYear, tempMonth, tempDay, tempHour, tempMinute);
+            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
+            String dateString = sdf.format(temp.getTimeInMillis());
+            date.setText(dateString);
+        }
+        else {
+            date.setText("DATE NOT SET");
+        }
+    }
 }
 
 
